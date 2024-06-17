@@ -7,6 +7,8 @@ import MapScreen from '../screens/MapScreen';
 
 const Stack = createNativeStackNavigator();
 
+
+
 const MainNavigation = () => {
     return (
         <NavigationContainer>
@@ -18,5 +20,5 @@ const MainNavigation = () => {
     )
 }
 
-export default MainNavigation
+export default MainNavigation;
 
