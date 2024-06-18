@@ -1,12 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native';
 import MainNavigation from './src/navigations/MainNavigation';
+import { Provider } from 'react-redux';
+import { store } from './src/redux/store';
 
 
 
 
 export default function App() {
   return (
-    <MainNavigation />
+    <Provider store={store}>
+      <MainNavigation />
+    </Provider>
   );
 }
 
