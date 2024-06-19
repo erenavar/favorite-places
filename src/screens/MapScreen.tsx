@@ -26,7 +26,7 @@ export default function MapScreen() {
                 }
 
             >
-                <Marker coordinate={location} pinColor='green' />
+                <Marker coordinate={location} pinColor='green' title='test' description='test2' />
             </MapView>
         </SafeAreaView>
     )
