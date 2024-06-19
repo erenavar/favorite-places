@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 export default function Button(props) {
     return (
-        <View style={styles.buttonContainer}>
+        <Pressable style={styles.buttonContainer} onPress={props.toNavigate}>
             <Text style={styles.buttonText}>{props.title}</Text>
-        </View>
+        </Pressable>
     )
 }
 

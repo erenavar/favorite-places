@@ -1,8 +1,10 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import MapView, { LatLng, Marker } from 'react-native-maps'
 
 export default function MapScreen() {
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("")
     const [location, setLocation] = useState<LatLng>({
         latitude: 0,
         longitude: 0
@@ -13,6 +15,10 @@ export default function MapScreen() {
     }
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            <View>
+                <TextInput value={title} onChangeText={(text) => setTitle(text)} />
+                <TextInput value={description} onChangeText={(text) => setDescription(text)} />
+            </View>
             <MapView
                 style={styles.map}
                 region={{
