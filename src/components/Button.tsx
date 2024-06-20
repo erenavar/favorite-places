@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Button(props) {
     return (
-        <Pressable style={styles.buttonContainer} onPress={props.toNavigate}>
+        <Pressable style={styles.buttonContainer} onPress={props.onPress}>
             <Text style={styles.buttonText}>{props.title}</Text>
         </Pressable>
     )

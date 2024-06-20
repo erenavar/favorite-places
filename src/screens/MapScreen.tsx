@@ -14,16 +14,28 @@ export default function MapScreen() {
     const getLocationCoordinate = (latLng: LatLng) => {
         setLocation({ latitude: latLng.latitude, longitude: latLng.longitude })
     }
+
+    const addAdress = () => {
+        const markerValue = {
+            latitude: location.latitude,
+            longitude: location.longitude,
+            title,
+            description
+
+        }
+        console.log('marker :>> ', markerValue);
+    }
+
     return (
 
         <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
             <View style={styles.textInputContainer}>
                 <Text style={styles.inputLabel}>Place Name</Text>
-                <TextInput style={styles.input} value={title} onChangeText={(text) => setTitle(text)} />
+                <TextInput style={styles.input} placeholder='Adress' value={title} onChangeText={setTitle} />
                 <Text style={styles.inputLabel}>Description</Text>
-                <TextInput style={styles.input} value={description} onChangeText={(text) => setDescription(text)} />
+                <TextInput style={styles.input} placeholder='Description' value={description} onChangeText={(text) => setDescription(text)} />
             </View>
-            <Button style={styles.button} title={"Add New Place"} />
+            <Button style={styles.button} title={"Add New Place"} onPress={addAdress} />
             <MapView
                 style={styles.map}
                 region={{
@@ -52,7 +64,8 @@ const styles = StyleSheet.create({
         flex: 2,
         padding: 10,
         backgroundColor: "white",
-        gap: 5
+        gap: 5,
+        marginBottom: 20
     },
     inputLabel: {
         marginLeft: "3%",
@@ -60,7 +73,7 @@ const styles = StyleSheet.create({
         marginTop: "5%"
     },
     input: {
-        padding: 4,
+        padding: 7,
         borderRadius: 10,
         borderColor: "blue",
         borderWidth: 1

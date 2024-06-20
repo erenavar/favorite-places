@@ -14,7 +14,7 @@ export default function FavouritesList() {
 
     return (
         <View>
-            <Button title={"Add New Place"} toNavigate={toMapPage} />
+            <Button title={"Add New Place"} onPress={toMapPage} />
         </View>
     )
 }
