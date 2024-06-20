@@ -1,6 +1,7 @@
 import { SafeAreaView, StyleSheet, TextInput, View, Text } from 'react-native'
 import React, { useState } from 'react'
 import MapView, { LatLng, Marker } from 'react-native-maps'
+import Button from '../components/Button';
 
 export default function MapScreen() {
     const [title, setTitle] = useState("");
@@ -15,13 +16,14 @@ export default function MapScreen() {
     }
     return (
 
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
             <View style={styles.textInputContainer}>
                 <Text style={styles.inputLabel}>Place Name</Text>
                 <TextInput style={styles.input} value={title} onChangeText={(text) => setTitle(text)} />
                 <Text style={styles.inputLabel}>Description</Text>
                 <TextInput style={styles.input} value={description} onChangeText={(text) => setDescription(text)} />
             </View>
+            <Button style={styles.button} title={"Add New Place"} />
             <MapView
                 style={styles.map}
                 region={{
@@ -42,9 +44,12 @@ export default function MapScreen() {
 
 const styles = StyleSheet.create({
     map: {
-        flex: 1
+        flex: 7,
+        marginTop: 20
+
     },
     textInputContainer: {
+        flex: 2,
         padding: 10,
         backgroundColor: "white",
         gap: 5
@@ -59,5 +64,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderColor: "blue",
         borderWidth: 1
+    },
+    button: {
+
     }
 })
