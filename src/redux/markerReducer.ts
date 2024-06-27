@@ -5,8 +5,7 @@ export interface IMarkerState {
     lat: number;
     long: number;
     title: string;
-    desc: string;
-    pinColor: string;
+    description: string
 }
 
 interface IMarkers {

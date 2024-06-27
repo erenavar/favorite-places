@@ -2,8 +2,10 @@ import { SafeAreaView, StyleSheet, TextInput, View, Text } from 'react-native'
 import React, { useState } from 'react'
 import MapView, { LatLng, Marker } from 'react-native-maps'
 import Button from '../components/Button';
+import { IMarkerState, addMarker } from '../redux/markerReducer';
+import { useDispatch } from 'react-redux';
 
-export default function MapScreen() {
+export default function MapScreen({ navigation }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("")
     const [location, setLocation] = useState<LatLng>({
@@ -11,19 +13,21 @@ export default function MapScreen() {
         longitude: 0
     })
 
+    const dispatch = useDispatch();
+
     const getLocationCoordinate = (latLng: LatLng) => {
         setLocation({ latitude: latLng.latitude, longitude: latLng.longitude })
     }
 
     const addAdress = () => {
-        const markerValue = {
-            latitude: location.latitude,
-            longitude: location.longitude,
+        const markerValue: IMarkerState = {
+            lat: location.latitude,
+            long: location.longitude,
             title,
-            description
-
+            description,
         }
-        console.log('marker :>> ', markerValue);
+        dispatch(addMarker(markerValue))
+        navigation.goBack();
     }
 
     return (
