@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, FlatList, StyleSheet, PressableProps } from 'react-native'
 import React from 'react'
 import Button from '../components/Button'
 import { useNavigation } from '@react-navigation/native'
@@ -18,9 +18,17 @@ export default function FavouritesList() {
     console.log('globalState :>> ', globalState);
     return (
         <SafeAreaView style={{ flex: 1, marginTop: 15 }}>
-            <ScrollView style={styles.scroll}>
-                <ListItem />
-            </ScrollView>
+            <FlatList
+                style={styles.scroll}
+                data={globalState.markers}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                    <ListItem title={item.title} onPress={() => alert("deneme")} />
+                )}
+
+            />
+
+
             <Button style={{ flex: 4 }} title={"Add New Place"} onPress={toMapPage} />
         </SafeAreaView>
     )

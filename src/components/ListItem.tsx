@@ -1,16 +1,17 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, PressableProps } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 
-export default function ListItem() {
+const ListItem = (props: PressableProps) => {
     return (
-        <View style={styles.itemContainer}>
-            <Text style={styles.text}>Test</Text>
+        <Pressable style={styles.itemContainer} {...props} >
+            <Text style={styles.text}>{props.title} </Text>
             <AntDesign name="delete" size={24} color="red" />
-
-        </View>
+        </Pressable>
     )
 }
+
+
 
 const styles = StyleSheet.create({
     itemContainer: {
@@ -26,3 +27,5 @@ const styles = StyleSheet.create({
     },
     text: { fontSize: 15 }
 })
+
+export default ListItem;

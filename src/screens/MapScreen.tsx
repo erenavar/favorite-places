@@ -4,6 +4,7 @@ import MapView, { LatLng, Marker } from 'react-native-maps'
 import Button from '../components/Button';
 import { IMarkerState, addMarker } from '../redux/markerReducer';
 import { useDispatch } from 'react-redux';
+import { randomUUID } from 'expo-crypto';
 
 export default function MapScreen({ navigation }) {
     const [title, setTitle] = useState("");
@@ -25,6 +26,7 @@ export default function MapScreen({ navigation }) {
             long: location.longitude,
             title,
             description,
+            id: randomUUID()
         }
         dispatch(addMarker(markerValue))
         navigation.goBack();
