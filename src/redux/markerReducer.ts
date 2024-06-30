@@ -1,4 +1,7 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { useNavigation } from "@react-navigation/native";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
+
 
 
 export interface IMarkerState {
@@ -12,22 +15,26 @@ export interface IMarkerState {
 interface IMarkers {
     markers: IMarkerState[]
 }
-
-
 const initialState: IMarkers = {
     markers: []
 
 }
 
 const markerSlice = createSlice({
+
     name: "markerSlice",
+    initialState,
     reducers: {
         addMarker: (state, action: PayloadAction<IMarkerState>) => {
             state.markers.push(action.payload);
+        },
+        updateMarker: (state, action: PayloadAction<IMarkerState>) => {
+
+            const updatedItem = state.markers.filter((i) => i.id == action.payload.id)
+            state.markers.splice(updatedItem, 1, action.payload);
         }
     },
-    initialState,
 })
 
-export const { addMarker } = markerSlice.actions;
+export const { addMarker, updateMarker } = markerSlice.actions;
 export default markerSlice.reducer;
