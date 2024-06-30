@@ -1,5 +1,5 @@
-import { SafeAreaView, FlatList, StyleSheet, PressableProps } from 'react-native'
-import React, { useEffect } from 'react'
+import { SafeAreaView, FlatList, StyleSheet } from 'react-native'
+import React from 'react'
 import Button from '../components/Button'
 import { useNavigation } from '@react-navigation/native'
 import ListItem from '../components/ListItem';

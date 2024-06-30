@@ -1,12 +1,41 @@
 import React from 'react'
-import { Pressable, StyleSheet, Text, PressableProps } from 'react-native'
+import { Pressable, StyleSheet, Text, PressableProps, Alert } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 
 const ListItem = (props: PressableProps) => {
+
+    const showAlert = () =>
+        Alert.alert(
+            'Alert Title',
+            'My Alert Msg',
+            [
+                {
+                    text: 'Delete',
+                    onPress: () => Alert.alert('Cancel Pressed'),
+                    style: "destructive",
+                },
+                {
+                    text: 'Cancel',
+                    onPress: () => Alert.alert('Deleted Succesfully'),
+                    style: "cancel",
+                }
+
+            ],
+            {
+                cancelable: true,
+                onDismiss: () =>
+                    Alert.alert(
+                        'This alert was dismissed by tapping outside of the alert dialog.',
+                    ),
+            },
+        );
+
     return (
         <Pressable style={styles.itemContainer} {...props} >
             <Text style={styles.text}>{props.title} </Text>
-            <AntDesign name="delete" size={24} color="red" />
+            <Pressable onPress={showAlert}>
+                <AntDesign name="delete" size={24} color="red" />
+            </Pressable>
         </Pressable>
     )
 }
