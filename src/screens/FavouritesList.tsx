@@ -19,8 +19,6 @@ export default function FavouritesList() {
     const selectItem = (item: IMarkerState) => {
         navigation.navigate("Map", { item })
     }
-
-    console.log("globalState:", globalState)
     return (
         <SafeAreaView style={{ flex: 1, marginTop: 15 }}>
             <FlatList
@@ -28,7 +26,7 @@ export default function FavouritesList() {
                 data={globalState.markers}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
-                    <ListItem title={item.title} onPress={() => selectItem(item)} />
+                    <ListItem title={item.title} id={item.id} onPress={() => selectItem(item)} />
                 )}
 
             />

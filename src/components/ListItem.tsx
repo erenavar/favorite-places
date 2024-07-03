@@ -1,22 +1,32 @@
 import React from 'react'
 import { Pressable, StyleSheet, Text, PressableProps, Alert } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
+import { useDispatch } from 'react-redux';
+import { deleteMarker } from '../redux/markerReducer';
 
 const ListItem = (props: PressableProps) => {
 
-    const showAlert = () =>
+    const dispatch = useDispatch();
+
+    const deleteItem = (id) => {
+        dispatch(deleteMarker(id));
+        alert("Deleted Succesfully")
+
+
+    }
+
+    const showAlert = (id) =>
         Alert.alert(
-            'Alert Title',
-            'My Alert Msg',
+            'Uninstall',
+            'Delete this Place?',
             [
                 {
                     text: 'Delete',
-                    onPress: () => Alert.alert('Cancel Pressed'),
+                    onPress: () => deleteItem(id),
                     style: "destructive",
                 },
                 {
                     text: 'Cancel',
-                    onPress: () => Alert.alert('Deleted Succesfully'),
                     style: "cancel",
                 }
 
@@ -33,7 +43,7 @@ const ListItem = (props: PressableProps) => {
     return (
         <Pressable style={styles.itemContainer} {...props} >
             <Text style={styles.text}>{props.title} </Text>
-            <Pressable onPress={showAlert}>
+            <Pressable onPress={() => showAlert(props.id)}>
                 <AntDesign name="delete" size={24} color="red" />
             </Pressable>
         </Pressable>

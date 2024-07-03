@@ -31,9 +31,14 @@ const markerSlice = createSlice({
 
             const updatedItem = state.markers.filter((i) => i.id == action.payload.id)
             state.markers.splice(updatedItem, 1, action.payload);
+        },
+        deleteMarker: (state, action) => {
+            state.markers = state.markers.filter((i) => i.id !== action.payload);
+
         }
+
     },
 })
 
-export const { addMarker, updateMarker } = markerSlice.actions;
+export const { addMarker, updateMarker, deleteMarker } = markerSlice.actions;
 export default markerSlice.reducer;
